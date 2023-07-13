@@ -4,12 +4,12 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { userId } = await auth();
+    const { userId } = auth();
     const body = await req.json();
     const { name } = body;
 
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse("Unauthenticated", { status: 401 });
     }
     if (!name) {
       return new NextResponse("Missing name", { status: 400 });
@@ -35,11 +35,11 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  const { userId, getToken } = await auth();
+  const { userId, getToken } = auth();
   console.log("🚀 ~ file: route.ts:39 ~ GET ~ getToken:", getToken);
 
   if (!userId) {
-    return new NextResponse("Unauthorized", { status: 401 });
+    return new NextResponse("Unauthenticated", { status: 401 });
   }
 
   const data = await prismadb.store.findMany({
