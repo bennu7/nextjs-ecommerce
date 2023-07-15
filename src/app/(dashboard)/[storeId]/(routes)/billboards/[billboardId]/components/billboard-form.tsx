@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { useOrigin } from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
 interface BillboardFormProps {
@@ -92,9 +91,9 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
         `/api/${params.storeId}/billboards/${params.billboardId}`
       );
 
-      toast.success("Store deleted successfully");
       router.refresh();
-      router.push("/");
+      router.push(`/${params.storeId}/billboards`);
+      toast.success("Billbore deleted successfully");
     } catch (error: any) {
       toast.error(
         "Make sure you removed all categories using this billboard first.",
@@ -113,6 +112,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
         loading={loading}
         onClose={() => setOpen(false)}
         onConfirm={onDelete}
+        description="This will delete your billboard"
       />
       <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
@@ -178,7 +178,6 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
-      <Separator />
     </>
   );
 };

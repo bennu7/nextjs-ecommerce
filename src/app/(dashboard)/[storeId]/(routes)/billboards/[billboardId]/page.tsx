@@ -1,6 +1,8 @@
 "use strict";
+
 import prismadb from "@/lib/prismadb";
 import React from "react";
+
 import { BillboardForm } from "./components/billboard-form";
 
 interface BillboardId {

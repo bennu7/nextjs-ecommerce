@@ -9,6 +9,8 @@ interface AlertModalProps {
   onClose: () => void;
   onConfirm: () => void;
   loading: boolean;
+  title?: string;
+  description?: string;
 }
 
 const AlertModal: React.FC<AlertModalProps> = ({
@@ -16,6 +18,8 @@ const AlertModal: React.FC<AlertModalProps> = ({
   onClose,
   onConfirm,
   loading,
+  title = "Are u sure?",
+  description = "This will delete your store",
 }) => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
@@ -27,8 +31,8 @@ const AlertModal: React.FC<AlertModalProps> = ({
 
   return (
     <Modal
-      title="Are u sure?"
-      description="This will delete your store"
+      title={title}
+      description={description}
       isOpen={isOpen}
       onClose={onClose}
     >
