@@ -8,7 +8,8 @@ export type BillboardColumn = {
   id: string;
   label: string;
   createdAt: string;
-  url?: string;
+  storeId?: string;
+  imageUrl?: string;
 };
 
 export const columns: ColumnDef<BillboardColumn>[] = [
@@ -21,7 +22,12 @@ export const columns: ColumnDef<BillboardColumn>[] = [
     header: "Date",
   },
   {
+    accessorKey: "imageUrl",
+    header: "Url Image",
+  },
+  {
     id: "actions",
+    header: "Actions",
     cell: ({ row }) => <CellAction data={row.original} />,
   },
 ];

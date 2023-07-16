@@ -1,33 +1,18 @@
-import React from "react";
+"use client";
 
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/nextjs";
+import React, { useRef } from "react";
 
 const AboutPage = () => {
+  const number = useRef(1);
+  const add = () => {
+    number.current = number.current + 1;
+    console.log(number.current);
+  };
   return (
-    // <header
-    //   style={{
-    //     display: "flex",
-    //     justifyContent: "space-between",
-    //     padding: 20,
-    //   }}
-    // >
-    //   <h1>My App</h1>
-    //   <SignedIn>
-    //     {/* Mount the UserButton component */}
-    //     <UserButton afterSignOutUrl="/" />
-    //   </SignedIn>
-    //   <SignedOut>
-    //     {/* Signed out users get sign in button */}
-    //     <SignInButton />
-    //   </SignedOut>
-    // </header>
-    <div>welcome about</div>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div>{number.current}</div>
+      <button onClick={add}>add</button>
+    </div>
   );
 };
 

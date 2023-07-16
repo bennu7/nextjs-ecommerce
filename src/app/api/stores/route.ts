@@ -35,16 +35,11 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  const { userId, getToken } = auth();
-  console.log("🚀 ~ file: route.ts:39 ~ GET ~ getToken:", getToken);
-
-  if (!userId) {
-    return new NextResponse("Unauthenticated", { status: 401 });
-  }
+  const { userId } = auth();
 
   const data = await prismadb.store.findMany({
     where: {
-      userId,
+      userId: userId || "",
     },
   });
 

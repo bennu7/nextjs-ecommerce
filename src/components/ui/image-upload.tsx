@@ -2,10 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { CldUploadWidget } from "next-cloudinary";
+import { CldUploadWidget, CldUploadWidgetProps } from "next-cloudinary";
 import { ImagePlusIcon, Trash as TrashIcon } from "lucide-react";
 
 import { Button } from "./button";
+import { IImageUpload } from "@/types/imageUpload";
 
 interface ImageUploadProps {
   disabled?: boolean;
@@ -26,7 +27,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     setIsMounted(true);
   }, []);
 
-  const onUpload = (result: any) => {
+  const onUpload = (result: IImageUpload) => {
     onChange(result.info.secure_url);
   };
 

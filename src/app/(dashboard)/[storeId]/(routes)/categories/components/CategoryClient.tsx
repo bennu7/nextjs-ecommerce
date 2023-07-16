@@ -9,14 +9,14 @@ import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { DataTable } from "@/components/ui/data-table";
 
-import { BillboardColumn, columns } from "./Columns";
+import { CategoryColumn, columns } from "./Columns";
 import ApiList from "@/components/ui/api-list";
 
-interface BillboardClientProps {
-  data: BillboardColumn[];
+interface CategoryClientProps {
+  data: CategoryColumn[];
 }
 
-const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
+const CategoryClient: React.FC<CategoryClientProps> = ({ data }) => {
   const [isClient, setIsClient] = useState<boolean>(false);
 
   const router = useRouter();
@@ -30,11 +30,11 @@ const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Billboards (${data.length})`}
-          description="Manage billboards for your store"
+          title={`Category (${data.length})`}
+          description="Manage categories for your store"
         />
         <Button
-          onClick={() => router.push(`/${params.storeId}/billboards/new`)}
+          onClick={() => router.push(`/${params.storeId}/categories/new`)}
         >
           <PlusIcon className="w-4 h-4 mr-2" />
           Add New
@@ -42,15 +42,15 @@ const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
       </div>
       <Separator />
       {data.length > 0 ? (
-        <DataTable searchKey="label" columns={columns} data={data} />
+        <DataTable searchKey="name" columns={columns} data={data} />
       ) : (
         <div className="flex items-center justify-center w-full h-64">
-          <span className="text-gray-500">No billboards found</span>
+          <span className="text-gray-500">No category found</span>
         </div>
       )}
-      <Heading title="API" description="API calls for billboards" />
+      <Heading title="API" description="API calls for Categories" />
       <Separator />
-      <ApiList entityName="billboards" entityIdName="billboardId" />
+      <ApiList entityName="categories" entityIdName="categoryId" />
     </>
   ) : (
     <div className="flex items-center justify-center w-full h-64 text-zinc-400">
@@ -59,4 +59,4 @@ const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
   );
 };
 
-export default BillboardClient;
+export default CategoryClient;

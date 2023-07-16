@@ -1,7 +1,8 @@
 "use client";
 
-import StoreModal from "@/components/modals/store-modal";
 import React, { useEffect, useState } from "react";
+
+import StoreModal from "@/components/modals/store-modal";
 
 const ModalProvider = () => {
   // ? untuk menghindari error saat rendering di server

@@ -25,6 +25,8 @@ const BillboardsPge: React.FC<BillboardsPageProps> = async ({ params }) => {
     id: item.id,
     label: item.label,
     createdAt: format(new Date(item.createdAt), "MMMM do, yyyy"),
+    imageUrl: item.imageUrl,
+    storeId: item.storeId,
   }));
 
   return (
