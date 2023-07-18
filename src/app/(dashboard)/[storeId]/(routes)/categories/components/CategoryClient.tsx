@@ -8,9 +8,8 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { DataTable } from "@/components/ui/data-table";
-
+import { ApiList } from "@/components/ui/api-list";
 import { CategoryColumn, columns } from "./Columns";
-import ApiList from "@/components/ui/api-list";
 
 interface CategoryClientProps {
   data: CategoryColumn[];

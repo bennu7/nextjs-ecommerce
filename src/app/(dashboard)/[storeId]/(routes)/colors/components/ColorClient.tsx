@@ -9,13 +9,14 @@ import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { DataTable } from "@/components/ui/data-table";
 import { ApiList } from "@/components/ui/api-list";
-import { BillboardColumn, columns } from "./Columns";
+import { Loading } from "@/components/ui/loading";
+import { ColorColumn, columns } from "./Columns";
 
-interface BillboardClientProps {
-  data: BillboardColumn[];
+interface ColorClientProps {
+  data: ColorColumn[];
 }
 
-const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
+const ColorClient: React.FC<ColorClientProps> = ({ data }) => {
   const [isClient, setIsClient] = useState<boolean>(false);
 
   const router = useRouter();
@@ -29,33 +30,29 @@ const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Billboards (${data.length})`}
-          description="Manage billboards for your store"
+          title={`Colors (${data.length})`}
+          description="Manage colors for your store"
         />
-        <Button
-          onClick={() => router.push(`/${params.storeId}/billboards/new`)}
-        >
+        <Button onClick={() => router.push(`/${params.storeId}/colors/new`)}>
           <PlusIcon className="w-4 h-4 mr-2" />
           Add New
         </Button>
       </div>
       <Separator />
       {data.length > 0 ? (
-        <DataTable searchKey="label" columns={columns} data={data} />
+        <DataTable searchKey="name" columns={columns} data={data} />
       ) : (
         <div className="flex items-center justify-center w-full h-64">
-          <span className="text-gray-500">No billboards found</span>
+          <span className="text-gray-500">No colors found</span>
         </div>
       )}
-      <Heading title="API" description="API calls for billboards" />
+      <Heading title="API" description="API calls for colors" />
       <Separator />
-      <ApiList entityName="billboards" entityIdName="billboardId" />
+      <ApiList entityName="colors" entityIdName="colorId" />
     </>
   ) : (
-    <div className="flex items-center justify-center w-full h-64 text-zinc-400">
-      ...loading
-    </div>
+    <Loading />
   );
 };
 
-export default BillboardClient;
+export default ColorClient;
