@@ -181,7 +181,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue
-                          // defaultValue={field.value}
+                          defaultValue={field.value}
                           placeholder="Select a billboard"
                           className="text-black"
                         />

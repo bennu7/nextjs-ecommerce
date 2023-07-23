@@ -17,7 +17,7 @@ const CategoriesPage: React.FC<BillboardsPageProps> = async ({ params }) => {
       storeId: params.storeId,
     },
     include: {
-      Billboard: true,
+      billboard: true,
     },
     orderBy: {
       createdAt: "desc",
@@ -27,7 +27,7 @@ const CategoriesPage: React.FC<BillboardsPageProps> = async ({ params }) => {
   const formattedCategory: CategoryColumn[] = categories.map((item) => ({
     id: item.id,
     name: item.name,
-    billboardLabel: item.Billboard.label,
+    billboardLabel: item.billboard.label,
     createdAt: format(new Date(item.createdAt), "MMMM do, yyyy"),
   }));
 
